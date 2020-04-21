@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
   firebaseAPIKey: 'AIzaSyCmh60yPbdmY5zKW3ZTpvgEPUteuGEpMhI',
   firebaseConfig : {
     apiKey:  'AIzaSyCmh60yPbdmY5zKW3ZTpvgEPUteuGEpMhI',
@@ -15,6 +16,9 @@ export const environment = {
     appId:  '1:286502116010:web:33cf41f773eba71182ced3',
     measurementId:  'G-85GXL9ZZMJ'
   }
+=======
+  firebaseAPIKey: 'AIzaSyCmh60yPbdmY5zKW3ZTpvgEPUteuGEpMhI'
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
 };
 
 /*

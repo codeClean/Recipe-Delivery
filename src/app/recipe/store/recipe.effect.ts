@@ -5,9 +5,13 @@ import * as recipeAction from './recipe.action';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../recipe.model';
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import * as fromAppRoot from '../../store/app.reducer';
 
 import * as env from '../../../environments/environment';
+=======
+import * as fromAppRoot from '../../store/app.reducer'
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
 
 @Injectable()
 export class RecipeEffect {
@@ -28,7 +32,10 @@ export class RecipeEffect {
         });
     }), map(recipes => {
         // this will automatically dispatch
+<<<<<<< HEAD
 
+=======
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
         return new recipeAction.SetRecipe(recipes);
     })
     );

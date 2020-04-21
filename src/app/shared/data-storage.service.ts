@@ -44,5 +44,39 @@ export class DataStorageService {
                 // this.recipeServ.setRecipe(recipes);
             }));
     }
+<<<<<<< HEAD
+=======
+    fetchMyRecipe() {
+        /*  let token;
+         this.userData.user.subscribe(user => {
+               token  = user.token;
+         }); */
+        return this.http.get<Recipe[]>('https://recipe-milano.firebaseio.com/recipes.json')
+            .pipe(map(recipes => {
+                if (!recipes) {
+                    return;
+                }
+                return recipes.map(recipe => {
+                    if (!recipe) {
+                        return;
+                    }
+                    return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] };
+                });
+            }), tap(recipes => {
+                if (!recipes) {
+                    return;
+                }
+                const username = JSON.parse(localStorage.getItem('userData')).email;
+                const myrecipes = recipes.filter(myrecipe => {
+                    return myrecipe.username === username;
+                });
+                console.log('tap is working');
+                // this.recipeServ.setRecipe(myrecipes);
+
+                this.store.dispatch(new recipeActions.SetRecipe(myrecipes));
+
+            }));
+    }
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
 
 }

@@ -6,8 +6,14 @@
 
         <div class="navbar-default">
             <ul class="nav navbar-nav">
+<<<<<<< HEAD
                 <li *ngIf="isLoggedIn"><a class="active" style="cursor: pointer;" (click)='onAllRecipes()'>All Recipes</a></li>
                 <li *ngIf="isLoggedIn" ><a class="active" style="cursor: pointer;" (click)='onMyRecipes()'>My Recipes</a></li>
+=======
+               <!--  <li><a href="#" (click)='onSelect("recipe")'>Recipes</a></li>
+                <li><a href="#" (click)='onSelect("shopping")'>Shopping</a></li>  -->
+                <li *ngIf="isLoggedIn" routerLinkActive="active"><a [routerLink]="['/recipe']"   >Recipes</a></li>
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
                 <li routerLinkActive="active"><a  routerLink='/shopping'  >Shopping</a></li>
                 <li *ngIf="!isLoggedIn" routerLinkActive="active"><a  routerLink='/login'  >log in</a></li> 
             </ul>

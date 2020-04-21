@@ -3,7 +3,11 @@ import { DataStorageService } from '../shared/data-storage.service';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as fromAppRoot from '../store/app.reducer';
+<<<<<<< HEAD
 import * as AuthAction from '../login/store/auth.action';
+=======
+import * as fromAuthAction from '../login/store/auth.action';
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
 import * as recipeAction from '../recipe/store/recipe.action';
 
 import { Store } from '@ngrx/store';
@@ -45,7 +49,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     saveRecipe() {
         this.store.dispatch( new recipeAction.StoreRecipe());
+<<<<<<< HEAD
         // this.dataServ.saveRecipe();
+=======
+        this.dataServ.saveRecipe();
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
     }
     fetchRecipe() {
 
@@ -59,6 +67,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
            }, 5000);
        }); */
      }
+<<<<<<< HEAD
      onMyRecipes(){
          const username = JSON.parse(localStorage.getItem('userData')).email;
          this.store.dispatch( new recipeAction.FilterMyRecipe(username));
@@ -71,6 +80,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     onLogout() {
         //this.logSer.onLogOut();
         this.store.dispatch( new AuthAction.UserLogout());
+=======
+    onLogout() {
+        //this.logSer.onLogOut();
+        this.store.dispatch( new fromAuthAction.UserLogout());
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
         console.log('loging out');
     }
      ngOnDestroy() {
@@ -87,5 +101,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.router.navigate(['account']);
 
     }
+<<<<<<< HEAD
     
+=======
+    myrecipe() {
+       console.log('my recipe ');
+
+      // this.recipeServ.onGetPrivateRecipe();
+      // this.router.navigateByUrl('/myrecipe');
+
+      // this.router.navigate(['myrecipe'],{relativeTo:});
+    }
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
 }

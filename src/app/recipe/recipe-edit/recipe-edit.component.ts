@@ -6,9 +6,13 @@ import * as recipeAction from '../store/recipe.action';
 import * as fromAppRoot from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { map, switchMap } from 'rxjs/operators';
+<<<<<<< HEAD
 import * as env from '../../../environments/environment';
 import * as firebase from 'firebase';
 // export default !firebase.apps.length ? firebase.initializeApp(env.environment.firebaseConfig) : firebase.app();
+=======
+import { authReducer } from 'src/app/login/store/auth.reducer';
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
 
 @Component({
   selector: 'app-recipe-edit',
@@ -25,6 +29,7 @@ export class RecipeEditComponent implements OnInit {
   ingredientsFrom: FormArray;
   ingFormGroup: FormGroup;
   url: any;
+<<<<<<< HEAD
   imageFile: File;
   urlToUpload: string;
   isLoading = false;
@@ -33,6 +38,12 @@ export class RecipeEditComponent implements OnInit {
   constructor(private router: Router,
     private rout: ActivatedRoute,
     private store: Store<fromAppRoot.AppState>) { }
+=======
+
+  constructor(private router: Router,
+              private rout: ActivatedRoute,
+              private store: Store<fromAppRoot.AppState>) { }
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
 
   ngOnInit(): void {
 
@@ -48,7 +59,11 @@ export class RecipeEditComponent implements OnInit {
           return index === this.id;
         });
       })).subscribe((recipe: Recipe) => {
+<<<<<<< HEAD
         this.editMode = isNaN(this.id) ? false : (this.id || this.id == 0) ? true : false;
+=======
+        this.editMode = isNaN(this.id) ? false : (this.id) ? true : false;
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
         this.recipeVal = recipe;
         this.ingredientsFrom = new FormArray([]);
         if (this.editMode && this.recipeVal && this.recipeVal.ingredients != null) {
@@ -99,6 +114,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   addRecipe() {
+<<<<<<< HEAD
     this.isLoading = true;
     const username = JSON.parse(localStorage.getItem('userData'));
     const recipeForm = this.recipeFormGroup.value;
@@ -164,6 +180,25 @@ export class RecipeEditComponent implements OnInit {
 
 
 
+=======
+    const user = JSON.parse(localStorage.getItem('userData'));
+    const recipeForm = this.recipeFormGroup.value;
+    const recipeNew: Recipe = new Recipe(user.email,
+      recipeForm.name,
+      recipeForm.description,
+      recipeForm.imagePath,
+      recipeForm.ingredients);
+
+    if (this.editMode) {
+      this.store.dispatch(new recipeAction.UpdateRecipe({ index: this.id, newRecipe: recipeNew}));
+      // this.recipeService.uppdateRecipe(this.id, this.recipeFormGroup.value);
+    } else {
+      this.store.dispatch(new recipeAction.AddRecipe(recipeNew));
+      // this.recipeService.addRecipe(this.recipeFormGroup.value);
+    }
+    this.router.navigate(['../'], { relativeTo: this.rout });
+    // console.log('recipe ' + recipeNew.name);
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
   }
 
   onCancel() {
@@ -178,24 +213,39 @@ export class RecipeEditComponent implements OnInit {
   onUploadImg(imgUrl) {
     console.log(' img uploading ' + imgUrl);
     if (imgUrl !== '') {
+<<<<<<< HEAD
       this.imgUploaded = false;
+=======
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
       this.url = imgUrl;
     }
   }
   onSelectFile(event) { // called each time file input changes
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
+<<<<<<< HEAD
       this.imageFile = event.target.files[0];
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (myevent) => { // called once readAsDataURL is completed
         this.url = myevent.target.result;
         this.recipeFormGroup.patchValue({
+=======
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (myevent) => { // called once readAsDataURL is completed
+       this.url = myevent.target.result;
+       this.recipeFormGroup.patchValue({
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
           imagePath: '',
         });
       };
       this.imgUploaded = true;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a48a755a9fa11c60553f3904e8c6861239a5fe2f
     }
   }
 
